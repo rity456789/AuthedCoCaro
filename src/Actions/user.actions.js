@@ -48,9 +48,13 @@ function register(user) {
 
     userService.register(user).then(
       user => {
-        dispatch(success());
-        history.push("/login");
-        dispatch(alertActions.success("Registration successful"));
+        if (user.user === null) {
+          alert("This name is existed.");
+        } else {
+          dispatch(success());
+          history.push("/login");
+          dispatch(alertActions.success("Registration successful"));
+        }
       },
       error => {
         dispatch(failure(error.toString()));
