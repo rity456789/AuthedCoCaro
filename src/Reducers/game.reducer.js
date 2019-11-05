@@ -203,7 +203,7 @@ function calculateWinner(i, squares) {
   return res;
 }
 
-function CoCaro(state = initialState, action) {
+function Game(state = initialState, action) {
   switch (action.type) {
     case gameConstants.MOVES_ORDER:
       return { ...state, isAscending: !state.isAscending };
@@ -263,4 +263,4 @@ function CoCaro(state = initialState, action) {
   }
 }
 
-export default CoCaro;
+export default Game;
