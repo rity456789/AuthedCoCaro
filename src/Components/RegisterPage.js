@@ -87,7 +87,7 @@ class RegisterComp extends React.Component {
                 </div>
                 <Col sm="9">
                   <Form.Control
-                    type="confirm"
+                    type="password"
                     name="confirm"
                     onChange={this.handleChange}
                     placeholder="confirm"
