@@ -12,7 +12,6 @@ const mapDispatchToProps = dispatch => {
   return {
     register: (name, password) => {
       dispatch(userActions.register({ name, password }));
-      //window.location.assign('/login');
     }
   };
 };

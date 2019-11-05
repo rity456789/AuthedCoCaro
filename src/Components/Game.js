@@ -60,23 +60,42 @@ class Game extends React.Component {
 
     return (
       <div>
-        <h1 className="title">Ban co caro Viet Nam</h1>
-        <div className="game">
-          <div className="game-board">
-            <Board
-              squares={current.squares}
-              onSquareClick={i => onSquareClick(i)}
-              winLine={winLine}
-            />
+        <div className="header">
+          <div className="col-10 text-white font-weight-bold">
+            Welcome:{" "}
+            {localStorage.getItem("user")
+              ? JSON.parse(localStorage.getItem("user")).user.name
+              : " "}
           </div>
-          <div className="game-info">
-            <div>{status}</div>
-            <div>{this.renderRestartBtn()}</div>
-            <div>
-              <button type="button" onClick={() => handleSortToggle()}>
-                {isAscending ? "descending" : "ascending"}
-              </button>
-              <ol>{moves}</ol>
+          <div className="text-right">
+            <button
+              variant="warning"
+              text="light"
+              onClick={() => this.props.logout()}
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+        <div className="entireGame">
+          <h1 className="title">Ban co caro Viet Nam</h1>
+          <div className="game">
+            <div className="game-board">
+              <Board
+                squares={current.squares}
+                onSquareClick={i => onSquareClick(i)}
+                winLine={winLine}
+              />
+            </div>
+            <div className="game-info">
+              <div>{status}</div>
+              <div>{this.renderRestartBtn()}</div>
+              <div>
+                <button type="button" onClick={() => handleSortToggle()}>
+                  {isAscending ? "descending" : "ascending"}
+                </button>
+                <ol>{moves}</ol>
+              </div>
             </div>
           </div>
         </div>

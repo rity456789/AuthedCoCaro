@@ -1,4 +1,4 @@
-import { authHeader } from "../Helpers";
+//import { authHeader } from "../Helpers";
 
 const apiUrl = "https://cocaroapi.herokuapp.com";
 
@@ -11,11 +11,11 @@ export const userService = {
   //delete: _delete
 };
 
-function login(username, password) {
+function login(name, password) {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password })
+    body: JSON.stringify({ name, password })
   };
 
   return fetch(`${apiUrl}/user/login`, requestOptions)
