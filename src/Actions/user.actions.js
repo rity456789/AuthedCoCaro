@@ -21,7 +21,7 @@ function login(name, password) {
       error => {
         dispatch(failure(error.toString()));
         dispatch(alertActions.error(error.toString()));
-        alert("Đăng nhập không thành công");
+        alert("Login failed");
       }
     );
   };
@@ -55,7 +55,12 @@ function register(user) {
       error => {
         dispatch(failure(error.toString()));
         dispatch(alertActions.error(error.toString()));
-        alert("Đăng ký không thành công");
+        alert("Registration failed");
+      },
+      message => {
+        if (message == "This name is existed") {
+          alert("This account already existed.");
+        }
       }
     );
   };

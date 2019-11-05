@@ -33,7 +33,9 @@ class LoginPage extends React.Component {
 
     const { name, password } = this.state;
 
-    if (name && password) {
+    if (name === "") alert("Please input username");
+    else if (password === "") alert("Please input password");
+    else {
       this.props.login(name, password);
     }
   }

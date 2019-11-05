@@ -31,8 +31,12 @@ class RegisterComp extends React.Component {
 
     const { name, password, confirm } = this.state;
 
+    if (name === "") alert("Please input username");
+    else if (password === "") alert("Please input password");
+    else if (confirm === "") alert("Please confirm password");
+
     if (password !== confirm) {
-      alert("Xác nhận mật khẩu không đúng");
+      alert("Confirm pass word is not correct");
     } else {
       if (name && password) {
         this.props.register(name, password);
