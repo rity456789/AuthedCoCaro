@@ -10,7 +10,7 @@ import LoginContainer from "./Containers/LoginContainer";
 import RegisterContainer from "./Containers/RegisterContainer";
 import { history } from "./Helpers";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "font-awesome/css/font-awesome.min.css";
+import "../node_modules/font-awesome/css/font-awesome.min.css";
 import "./index.css";
 
 ReactDOM.render(
