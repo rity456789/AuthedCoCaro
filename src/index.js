@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import * as serviceWorker from './serviceWorker';
-import CoCaroApp from './Reducers/index';
+import CoCaroApp from './Reducers/game.reducer';
 import CoCaro from './Containers/CoCaro';
 import './index.css';
 

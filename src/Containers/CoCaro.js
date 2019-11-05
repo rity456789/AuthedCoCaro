@@ -1,10 +1,5 @@
 import { connect } from 'react-redux';
-import {
-  selectSquare,
-  goToMove,
-  changeMovesOrder,
-  restartGame
-} from '../Actions/index';
+import { gameActions } from '../Actions/index';
 import Game from '../Components/Game';
 
 const mapStateToProps = state => {
@@ -14,16 +9,16 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onSquareClick: i => {
-      dispatch(selectSquare(i));
+      dispatch(gameActions.selectSquare(i));
     },
     jumpTo: step => {
-      dispatch(goToMove(step));
+      dispatch(gameActions.goToMove(step));
     },
     handleSortToggle: () => {
-      dispatch(changeMovesOrder());
+      dispatch(gameActions.changeMovesOrder());
     },
     restart: () => {
-      dispatch(restartGame());
+      dispatch(gameActions.restartGame());
     }
   };
 };
