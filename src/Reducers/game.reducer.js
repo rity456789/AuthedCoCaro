@@ -235,7 +235,7 @@ function Game(state = initialState, action) {
 
     case gameConstants.SELECT_SQUARE:
       const i = action.i;
-      var { historyTable, stepNumber } = state;
+      let { historyTable, stepNumber } = state;
       historyTable = historyTable.slice(0, stepNumber + 1);
       const current = historyTable[historyTable.length - 1];
       const squares = current.squares.slice();
@@ -244,8 +244,20 @@ function Game(state = initialState, action) {
         return state;
       }
       const { xIsNext } = state;
-      squares[action.i] = xIsNext ? "X" : "O";
-      const res = calculateWinner(i, squares);
+      squares[i] = xIsNext ? "X" : "O";
+      let res = calculateWinner(i, squares);
+      if (res.winner === null) {
+        //bot move
+        let j = i + 1;
+        for (; j < i + 400; j++) {
+          if (squares[j % 400] === null) {
+            break;
+          }
+        }
+        j = j % 400;
+        squares[j] = xIsNext ? "O" : "X";
+        res = calculateWinner(j, squares);
+      }
       return {
         ...state,
         historyTable: historyTable.concat([
@@ -255,7 +267,7 @@ function Game(state = initialState, action) {
           }
         ]),
         stepNumber: historyTable.length,
-        xIsNext: !xIsNext,
+        xIsNext: xIsNext,
         winner: res.winner,
         winLine: res.winLine
       };

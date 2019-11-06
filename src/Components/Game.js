@@ -88,7 +88,7 @@ class Game extends React.Component {
               />
             </div>
             <div className="game-info">
-              <div>{status}</div>
+              <div className="status">{status}</div>
               <div>{this.renderRestartBtn()}</div>
               <div>
                 <button type="button" onClick={() => handleSortToggle()}>
