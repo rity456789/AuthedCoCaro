@@ -15,6 +15,12 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -41,33 +47,33 @@
     ></div>
     <div id="root"></div>
     <script>
-      window.addEventListener('mousedown', function(e) {
-        document.body.classList.add('mouse-navigation');
-        document.body.classList.remove('kbd-navigation');
+      window.addEventListener("mousedown", function(e) {
+        document.body.classList.add("mouse-navigation");
+        document.body.classList.remove("kbd-navigation");
       });
-      window.addEventListener('keydown', function(e) {
+      window.addEventListener("keydown", function(e) {
         if (e.keyCode === 9) {
-          document.body.classList.add('kbd-navigation');
-          document.body.classList.remove('mouse-navigation');
+          document.body.classList.add("kbd-navigation");
+          document.body.classList.remove("mouse-navigation");
         }
       });
-      window.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
+      window.addEventListener("click", function(e) {
+        if (e.target.tagName === "A" && e.target.getAttribute("href") === "#") {
           e.preventDefault();
         }
       });
       window.onerror = function(message, source, line, col, error) {
         var text = error
           ? error.stack || error
-          : message + ' (at ' + source + ':' + line + ':' + col + ')';
-        errors.textContent += text + '\n';
-        errors.style.display = '';
+          : message + " (at " + source + ":" + line + ":" + col + ")";
+        errors.textContent += text + "\n";
+        errors.style.display = "";
       };
       console.error = (function(old) {
         return function error() {
           errors.textContent +=
-            Array.prototype.slice.call(arguments).join(' ') + '\n';
-          errors.style.display = '';
+            Array.prototype.slice.call(arguments).join(" ") + "\n";
+          errors.style.display = "";
           old.apply(this, arguments);
         };
       })(console.error);

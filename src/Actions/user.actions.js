@@ -60,11 +60,6 @@ function register(user) {
         dispatch(failure(error.toString()));
         dispatch(alertActions.error(error.toString()));
         alert("Registration failed");
-      },
-      message => {
-        if (message == "This name is existed") {
-          alert("This account already existed.");
-        }
       }
     );
   };

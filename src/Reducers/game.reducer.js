@@ -1,4 +1,5 @@
-import { gameConstants } from '../Constants';
+import { gameConstants } from "../Constants";
+import { history } from "../Helpers";
 
 const initialState = {
   historyTable: [
@@ -212,7 +213,7 @@ function Game(state = initialState, action) {
       if (state.winner) return state;
       return {
         ...state,
-        historyTable: state.historyTable.slice(0, action.step + 1),
+        //historyTable: state.historyTable.slice(0, action.step + 1),
         stepNumber: action.step,
         xIsNext: action.step % 2 === 0
       };
@@ -234,7 +235,8 @@ function Game(state = initialState, action) {
 
     case gameConstants.SELECT_SQUARE:
       const i = action.i;
-      const { historyTable } = state;
+      var { historyTable, stepNumber } = state;
+      historyTable = historyTable.slice(0, stepNumber + 1);
       const current = historyTable[historyTable.length - 1];
       const squares = current.squares.slice();
       const { winner } = state;
@@ -242,7 +244,7 @@ function Game(state = initialState, action) {
         return state;
       }
       const { xIsNext } = state;
-      squares[action.i] = xIsNext ? 'X' : 'O';
+      squares[action.i] = xIsNext ? "X" : "O";
       const res = calculateWinner(i, squares);
       return {
         ...state,
